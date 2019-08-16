@@ -1,0 +1,336 @@
+
+<!doctype html>
+<html lang="en">
+    {{template "/components/head.html" .}}
+<body>
+    <amp-auto-ads type="adsense"
+              data-ad-client="ca-pub-5577816484280839">
+</amp-auto-ads>
+ <style type="text/css">
+ .img-responsive,
+ .thumbnail > img,
+ .thumbnail a > img,
+ .carousel-inner > .item > img,
+ .carousel-inner > .item > a > img {
+ display: block;
+ width: 150px;
+ max-height: 230px;
+ min-height: 200px;
+ height: auto;
+ }
+</style>
+ <!-- Search inside modal -->
+<div class="modal fade" id="search-modal" tabindex="-1" role="dialog">
+ <div class="modal-dialog" role="document">
+ <div class="modal-content">
+ <div class="modal-header">
+ <span style="color: #FA4C29; font-size: 18px; font-weight: bold;"><i class="fa fa-search" style="font-size: 18px;"></i> Movies<span style="color: #C7C7C7"> & Shows</span>
+ </div>
+ <section>
+ <div class="modal-body" style="width: 100%; display: inline-block;">
+ <input type="text" name="moviename" class="form-control" placeholder="Type here">
+ <div class="col-md-12 search-result">
+ </div>
+ </div>
+ </section>
+ </div>
+ </div>
+ </div>
+ <!-- //Search inside modal -->
+ {{template "/components/header.html" .}}
+ <main class="container py-5" style="transform: translateY(53px);">
+    <div class="row">
+    <div class="col-12 p-0 p-md-3">
+    <div id="player"> 
+      <div id="video-player" class="embed-responsive embed-responsive-16by9 video pointer nocontext">
+         <!-- <video id="videoPlayer" class="embed-responsive-item nocontext" preload="none" poster="https://filmhd4u.com/aset/movie_img/Once_Upon_a_Time_in_Hollywood_hd.jpg"> -->
+         <video id="player_html5_api" class="vjs-tech" preload="auto" poster="https://img1.ak.crunchyroll.com/i/spire1-tmb/79579d2908f3f809461d019e8389c2111564066456_fwide.jpg" playsinline="playsinline" webkit-playsinline="" tabindex="-1" autoplay="autoplay" src="blob:https://static.crunchyroll.com/f895f919-ab86-4ff6-873c-97b07ae9b479"></video>
+         <p>Your browser doesn't support HTML5 video</p>
+        </video>
+        <div class="loading-wrap">
+        <div class="virtual-middle">
+          <div class="loading"></div>
+        </div>
+        </div>
+        <div class="control-wrap ease">
+        <div class="virtual-middle">
+          <span id="play" class="play-btn-border ease">
+           <a href="javascript:void(0);" onclick="regplayClick()"> <i class="fas fa-play headline-round ease" aria-hidden="true"></i></a>
+          </span>
+        </div>
+        <div class="media-controls ease">
+          <div class="float-left">
+            <button type="button" name="Play" class="btn icon-control-play" id="play_btn">
+             <a href="javascript:void(0);" onclick="regplayClick()"><i class="fas fa-play"></i></a>
+            </button>
+            <button id="volumeInc_btn" name="Volume" class="btn icon-volume-2">
+            <a href="javascript:void(0);" onclick="regplayClick()"> <i class="fas fa-volume-up"></i></a>
+            </button>
+            <button id="timeContainer" class="btn">0:00:
+            <span class="dmax">2h 41min</span>
+            </button>
+          </div>
+          <div class="float-right">
+            <div id="setting_btn" class="btn-group dropup">
+            <button name="Setting" class="btn icon-settings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a href="javascript:void(0);" onclick="regplayClick()"> <i class="fas fa-cog"><span>HD</span></i></a>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li class="dropdown-item hq active">HD 1080p</li>
+              <li class="dropdown-item hq">HD 720p</li>
+            </ul>
+            </div>
+            <button id="fullscreen_btn" name="Fullscreen" class="btn icon-size-fullscreen">
+             <a href="javascript:void(0);" onclick="regplayClick()"><i class="fas fa-expand-arrows-alt"></i></a>
+            </button>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div> 
+    </div>
+
+<!-- Modal End-->  </div>
+  </main>
+  
+      <div class="col-12">
+    <div class="movies-list-wrap mlw-related">
+<div class="mb-2 text-center text-md-right">
+</div>
+    <div class="titles-container fluid-titles-grid">
+        <a href="https://filmhd4u.com/Spider-Man-Far-from-Home" data-needsupdate="false">
+      <div class="lazy" style="background-image: url(https://filmhd4u.com/aset/new_movie_img/SPIDER.jpg);">
+      </div>
+      <!--div class="title-info px-2 py-2">
+         <i class="fas fa-star"></i> 8.0/<small>10</small>
+      </div-->
+      
+          <div class="title-info px-2 py-2">
+         
+      </div>
+      <div class="justify-content-center w3l-action-icon go-button align-items-center"><i class="far fa-play-circle"></i></div>
+      <div class="title text-center p-1">Spider-Man: Far from Home      </div>
+    </a>
+    <a href="https://filmhd4u.com/Spider-Man-Far-from-Home" data-needsupdate="false">
+      <div class="lazy" style="background-image: url(https://filmhd4u.com/aset/new_movie_img/SPIDER.jpg);">
+      </div>
+      <!--div class="title-info px-2 py-2">
+         <i class="fas fa-star"></i> 8.0/<small>10</small>
+      </div-->
+      
+          <div class="title-info px-2 py-2">
+         
+      </div>
+      <div class="justify-content-center w3l-action-icon go-button align-items-center"><i class="far fa-play-circle"></i></div>
+      <div class="title text-center p-1">Spider-Man: Far from Home      </div>
+    </a>
+    <a href="https://filmhd4u.com/Spider-Man-Far-from-Home" data-needsupdate="false">
+      <div class="lazy" style="background-image: url(https://filmhd4u.com/aset/new_movie_img/SPIDER.jpg);">
+      </div>
+      <!--div class="title-info px-2 py-2">
+         <i class="fas fa-star"></i> 8.0/<small>10</small>
+      </div-->
+      
+          <div class="title-info px-2 py-2">
+         
+      </div>
+      <div class="justify-content-center w3l-action-icon go-button align-items-center"><i class="far fa-play-circle"></i></div>
+      <div class="title text-center p-1">Spider-Man: Far from Home      </div>
+    </a>
+          <a href="https://filmhd4u.com/Us-Full-Movie" data-needsupdate="false">
+      <div class="lazy" style="background-image: url(https://filmhd4u.com/aset/new_movie_img/us.jpg);">
+      </div>
+      <!--div class="title-info px-2 py-2">
+         <i class="fas fa-star"></i> 7.5/<small>10</small>
+      </div-->
+      
+          <div class="title-info px-2 py-2">
+         
+      </div>
+      <div class="justify-content-center w3l-action-icon go-button align-items-center"><i class="far fa-play-circle"></i></div>
+      <div class="title text-center p-1">Us      </div>
+    </a>
+          <a href="https://filmhd4u.com/Aladdin-Movie-Online" data-needsupdate="false">
+      <div class="lazy" style="background-image: url(https://filmhd4u.com/aset/new_movie_img/Aladdin1.jpg);">
+      </div>
+      <!--div class="title-info px-2 py-2">
+         <i class="fas fa-star"></i> 7.3/<small>10</small>
+      </div-->
+      
+          <div class="title-info px-2 py-2">
+         
+      </div>
+      <div class="justify-content-center w3l-action-icon go-button align-items-center"><i class="far fa-play-circle"></i></div>
+      <div class="title text-center p-1">Aladdin      </div>
+    </a>
+          <a href="https://filmhd4u.com/Detective-Pikachu-Movie-Online" data-needsupdate="false">
+      <div class="lazy" style="background-image: url(https://filmhd4u.com/aset/new_movie_img/Pokémon_Detective_Pikachu.jpg);">
+      </div>
+      <!--div class="title-info px-2 py-2">
+         <i class="fas fa-star"></i> 7.0/<small>10</small>
+      </div-->
+      
+          <div class="title-info px-2 py-2">
+         
+      </div>
+      <div class="justify-content-center w3l-action-icon go-button align-items-center"><i class="far fa-play-circle"></i></div>
+      <div class="title text-center p-1">Pokémon Detective Pikachu      </div>
+    </a>
+          <a href="https://filmhd4u.com/No-Manches-Frida-2" data-needsupdate="false">
+      <div class="lazy" style="background-image: url(https://filmhd4u.com/aset/new_movie_img/No_manches_Frida_2.jpg);">
+      </div>
+      <!--div class="title-info px-2 py-2">
+         <i class="fas fa-star"></i> 5.7/<small>10</small>
+      </div-->
+      
+          <div class="title-info px-2 py-2">
+         
+      </div>
+      <div class="justify-content-center w3l-action-icon go-button align-items-center"><i class="far fa-play-circle"></i></div>
+      <div class="title text-center p-1">No Manches Frida 2      </div>
+    </a>
+          <a href="https://filmhd4u.com/fastfurioushobbsandshaw-full-movie" data-needsupdate="false">
+      <div class="lazy" style="background-image: url(https://filmhd4u.com/aset/new_movie_img/FastFurious_PresentsHobbs_Shaw.jpg);">
+      </div>
+      <!--div class="title-info px-2 py-2">
+         <i class="fas fa-star"></i> 8.0/<small>10</small>
+      </div-->
+      
+          <div class="title-info px-2 py-2">
+         
+      </div>
+      <div class="justify-content-center w3l-action-icon go-button align-items-center"><i class="far fa-play-circle"></i></div>
+      <div class="title text-center p-1">Fast & Furious Presents: Hobbs & Shaw      </div>
+    </a>
+          <a href="https://filmhd4u.com/men-in-black-iInternational-full-movie-online" data-needsupdate="false">
+      <div class="lazy" style="background-image: url(https://filmhd4u.com/aset/new_movie_img/Men_in_Black_International.jpg);">
+      </div>
+      <!--div class="title-info px-2 py-2">
+         <i class="fas fa-star"></i> 6.7/<small>10</small>
+      </div-->
+      
+          <div class="title-info px-2 py-2">
+         
+      </div>
+      <div class="justify-content-center w3l-action-icon go-button align-items-center"><i class="far fa-play-circle"></i></div>
+      <div class="title text-center p-1">Men in Black International      </div>
+    </a>
+          <a href="https://filmhd4u.com/Toy-Story-4" data-needsupdate="false">
+      <div class="lazy" style="background-image: url(https://filmhd4u.com/aset/new_movie_img/ToyStory4.jpg);">
+      </div>
+      <!--div class="title-info px-2 py-2">
+         <i class="fas fa-star"></i> 9.0/<small>10</small>
+      </div-->
+      
+          <div class="title-info px-2 py-2">
+         
+      </div>
+      <div class="justify-content-center w3l-action-icon go-button align-items-center"><i class="far fa-play-circle"></i></div>
+      <div class="title text-center p-1">Toy Story 4       </div>
+    </a>
+          <a href="https://filmhd4u.com/Annabelle-Comes-Home-Movie-review" data-needsupdate="false">
+      <div class="lazy" style="background-image: url(https://filmhd4u.com/aset/new_movie_img/ANNA.jpg);">
+      </div>
+      <!--div class="title-info px-2 py-2">
+         <i class="fas fa-star"></i> 6.5/<small>10</small>
+      </div-->
+      
+          <div class="title-info px-2 py-2">
+         
+      </div>
+      <div class="justify-content-center w3l-action-icon go-button align-items-center"><i class="far fa-play-circle"></i></div>
+      <div class="title text-center p-1">Annabelle Comes Home review      </div>
+    </a>
+          <a href="https://filmhd4u.com/Mid90s-2018-Full-Movie" data-needsupdate="false">
+      <div class="lazy" style="background-image: url(https://filmhd4u.com/aset/new_movie_img/Mid90s.jpg);">
+      </div>
+      <!--div class="title-info px-2 py-2">
+         <i class="fas fa-star"></i> 7.4/<small>10</small>
+      </div-->
+      
+          <div class="title-info px-2 py-2">
+         
+      </div>
+      <div class="justify-content-center w3l-action-icon go-button align-items-center"><i class="far fa-play-circle"></i></div>
+      <div class="title text-center p-1">Mid90s      </div>
+    </a>
+          </div>
+</div>
+    </div>
+  
+<script>
+
+$(function()
+{
+
+
+	$('a[data-toggle="tab"]').on('shown.bs.tab', function(e)
+	{
+		var ob = e.target;
+
+ 		switch($(ob).attr('id'))
+ 		{
+ 			case 'actors-tab':
+
+ 				$('.actors-container img.lazy').Lazy({
+ 				effect: "fadeIn",
+ 				effectTime: 200,
+ 				threshold: 0,
+ 				appendScroll: $('.actors-container')
+ 				});
+
+ 				$('.actors-container img[data-toggle="popover"]').popover();
+
+ 				if(!$(ob).data('has-images'))
+ 				{
+ 					//$('.actors-container').addClass('loading-overlay');
+ 					getActorsImagesForId('6305');
+ 				}
+ 				
+ 			break;
+
+
+
+ 			case 'recommended-tab':
+
+ 				$('.recommended-container a .lazy').lazy({
+ 				effect: "fadeIn",
+ 				effectTime: 200,
+ 				threshold: 0
+ 				});
+
+ 				if(!$(ob).data('has-images'))
+ 				{
+ 					//$('.recommended-container').addClass('loading-overlay');
+ 					pollRecommendedImages('6305');
+ 				}
+
+ 			break;
+
+ 		}
+
+	});
+
+	
+});
+</script>
+
+ <div id="counter" data-min="15540" data-max="15214">
+    <div class="lds-ripple"><div></div><div></div></div>
+    <span class="counter-value">12,633</span> Users Online
+  </div>
+  <script src="https://filmhd4u.com/asetnewplay/jquery-2.2.0.min.js"></script>
+  <script src="https://filmhd4u.com/asetnewplay/popper.min.js"></script>
+  <script src="https://filmhd4u.com/asetnewplay/bootstrap.min.js"></script>
+  <script src="https://filmhd4u.com/asetnewplay/scripts.js"></script>
+  <script type="text/javascript">
+ function regplayClick() {
+ window.location="//look.utndln.com/offer?prod=3&ref=5170042&s=stream&sub_id=Film";
+ }
+ function regplayClickD() {
+ window.location="//look.utndln.com/offer?prod=3&ref=5170042&s=download&sub_id=Film";
+ }
+</script> 
+    {{template "/components/footer.html" .}}
+</body>
+</html>
