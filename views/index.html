@@ -19,22 +19,7 @@
  height: auto;
  }
 </style>
- <div class="modal fade" id="search-modal" tabindex="-1" role="dialog">
- <div class="modal-dialog" role="document">
- <div class="modal-content">
- <div class="modal-header">
- <span style="color: #FA4C29; font-size: 18px; font-weight: bold;"><i class="fa fa-search" style="font-size: 18px;"></i> Movies<span style="color: #C7C7C7"> & Shows</span>
- </div>
- <section>
- <div class="modal-body" style="width: 100%; display: inline-block;">
- <input type="text" name="moviename" class="form-control" placeholder="Movies & Shows Type here">
- <div class="p-md-2 pt-md-3 search-result">
- </div>
- </div>
- </section>
- </div>
- </div>
- </div>
+
  {{template "/components/header.html" .}}
  <!-- //nav -->
 
@@ -615,6 +600,10 @@
                   <div class="justify-content-center w3l-action-icon go-button align-items-center"><i class="far fa-play-circle"></i></div>
                 <div class="title text-center p-1">{{.Name}}</div>
             </a>
+            {{else}}
+            <div style="font-size: 56px;text-align:center;">
+                `{{.search}}` Not found
+            </div>
 {{end}}
                       </div>
   <div class="clearfix"></div>

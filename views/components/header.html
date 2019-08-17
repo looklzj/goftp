@@ -1,68 +1,110 @@
 <nav class="navbar navbar-expand-md fixed-top">
-    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="icon-bar top-bar"></span>
-    <span class="icon-bar middle-bar"></span>
-    <span class="icon-bar bottom-bar"></span>
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
-    <div class="navbar-nav mr-auto">
-    <a class="nav-item nav-link"></a> 
-    <a class="nav-item nav-link home-link" href="/"><i class="fas fa-home mr-2"></i>Home</a>
-    <a class="nav-item nav-link movies-link" href="/home/aToz"><i class="far fa-film mr-2"></i>Popular</a>
-    <a class="nav-item nav-link series-link" href="/home/cat/23/TV-shows"><i class="fas fa-tv mr-2"></i>TV Series</a>
-    <div class="nav-item dropdown genres-dd">
-    <a href="#" class="nav-item nav-link dropdown-toggle genres-link" id="genresDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <i class="fas fa-theater-masks mr-2"></i>Genres
-    </a>
-    <div class="dropdown-menu" aria-labelledby="genresDropDown">
-    <div class="nav-genres-container pt-md-3 p-2">
-    <div class="row no-gutters">
-        {{range .tags}}
-            <a class="col-6 d-block p-1" href="/?tag={{.Name}}">{{.Name}}</a>
-        {{end}}
-    </div>
-    </div>
-    </div>
-    </div>
-    <a class="nav-item nav-link series-link" href="/register/music.php/"><i class="fas fa-music"></i> Music</a>
-    <!--a class="nav-item nav-link series-link" href="/register/games.php"><i class="fas fa-gamepad"></i> Games</a>
+        <div class="navbar-nav mr-auto">
+            <a class="nav-item nav-link"></a>
+            <a class="nav-item nav-link home-link" href="/"><i class="fas fa-home mr-2"></i>Home</a>
+            <a class="nav-item nav-link movies-link" href="/home/aToz"><i class="far fa-film mr-2"></i>Popular</a>
+            <a class="nav-item nav-link series-link" href="/home/cat/23/TV-shows"><i class="fas fa-tv mr-2"></i>TV
+                Series</a>
+            <div class="nav-item dropdown genres-dd">
+                <a href="#" class="nav-item nav-link dropdown-toggle genres-link" id="genresDropDown"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-theater-masks mr-2"></i>Genres
+                </a>
+                <div class="dropdown-menu" aria-labelledby="genresDropDown">
+                    <div class="nav-genres-container pt-md-3 p-2">
+                        <div class="row no-gutters">
+                            {{range .tags}}
+                            <a class="col-6 d-block p-1" href="/?tag={{.Name}}">{{.Name}}</a>
+                            {{end}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="nav-item nav-link series-link" href="/register/music.php/"><i class="fas fa-music"></i> Music</a>
+            <!--a class="nav-item nav-link series-link" href="/register/games.php"><i class="fas fa-gamepad"></i> Games</a>
     <!--a class="nav-item nav-link series-link" href="/register/books.php/"><i class="fas fa-book"></i> Books</a-->
-    <a class="nav-item nav-link series-link" href="/register/sports.php/"><i class="fas fa-life-ring"></i> Sports</a>
-    <!--a class="nav-item nav-link series-link" href="/register/tv.php/"><i class="fas fa-tv mr-2"></i> TV</a-->
-    <a class="nav-item nav-link">
-    </a>
+            <a class="nav-item nav-link series-link" href="/register/sports.php/"><i class="fas fa-life-ring"></i>
+                Sports</a>
+            <!--a class="nav-item nav-link series-link" href="/register/tv.php/"><i class="fas fa-tv mr-2"></i> TV</a-->
+            <a class="nav-item nav-link">
+            </a>
+        </div>
+        <div class="w3_search">
+            <form action="/search" method="get" onclick="js:$('#search-modal').modal('show')">
+                <input type="text" name="search" value={{.search}} placeholder="Search">
+                <!--input type="submit" value="Go"-->
+            </form>
+        </div>
+        <div class="nav-item nav-link series-link">
+            <a onclick="js:$('#search-modal').modal('show')"><i class="fas fa-search"></i></a> </div>
+        <a class="nav-item nav-link series-link" href="/register"><i class="fas fa-sign-in-alt"></i> LOGIN</a>
+        <script>
+            $('input[name="moviename"]').keyup(function () {
+                var q = $(this).val().trim();
+                if (q != '') {
+                    $.post("https://filmhd4u.com/home/searchajax", { q: q }, function (data) {
+                        $('.search-result').html(data);
+                        $('.search-result').find('li').addClass('col-auto p-1 p-md-2 pt-md-3');
+                    })
+                }
+            });
+        </script>
+
+        <script>
+            $('.toggle').click(function () {
+                // Switches the Icon
+                $(this).children('i').toggleClass('fa-pencil');
+                // Switches the forms 
+                $('.form').animate({
+                    height: "toggle",
+                    'padding-top': 'toggle',
+                    'padding-bottom': 'toggle',
+                    opacity: "toggle"
+                }, "slow");
+            });
+        </script>
+
+</nav>
+<style>
+ .search-submit-btn{
+    display: block;
+    margin: 20px auto 10px;
+    background: red;
+    color: #fff;
+    outline: none;
+    border: none;
+    width: 88px;
+    font-size: 17px;
+    border-radius: 4px;
+ }
+</style>
+<div class="modal fade" id="search-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span style="color: #FA4C29; font-size: 18px; font-weight: bold;"><i class="fa fa-search"
+                        style="font-size: 18px;"></i> Movies<span style="color: #C7C7C7"> & Shows</span>
+            </div>
+            <section>
+                <div class="modal-body" style="width: 100%; display: inline-block;">
+                    <input type="text" name="moviename" class="form-control" value={{.search}} placeholder="Movies & Shows Type here">
+                    <button class="search-submit-btn">search</button>
+                    <div class="p-md-2 pt-md-3 search-result">
+                    </div>
+                </div>
+            </section>
+        </div>
     </div>
-     <div class="w3_search"><form action="" method="post" onclick="js:$('#search-modal').modal('show')">
-     <input type="text" name="search" placeholder="Search">
-     <!--input type="submit" value="Go"--></form>
-     </div>
-      <div class="nav-item nav-link series-link">
-     <a onclick="js:$('#search-modal').modal('show')"><i class="fas fa-search"></i></a> </div>
-     <a class="nav-item nav-link series-link" href="/register"><i class="fas fa-sign-in-alt"></i> LOGIN</a>
-    <script>
-     $('input[name="moviename"]').keyup(function(){
-     var q = $(this).val().trim();
-     if(q!=''){
-     $.post("https://filmhd4u.com/home/searchajax", {q: q}, function(data){
-     $('.search-result').html(data);
-     $('.search-result').find('li').addClass('col-auto p-1 p-md-2 pt-md-3');
-     })
-     }
-     });
-    </script>
-    
-     <script>
-     $('.toggle').click(function () {
-     // Switches the Icon
-     $(this).children('i').toggleClass('fa-pencil');
-     // Switches the forms 
-     $('.form').animate({
-     height: "toggle",
-     'padding-top': 'toggle',
-     'padding-bottom': 'toggle',
-     opacity: "toggle"
-     }, "slow");
-     });
-     </script>
-    
-    </nav>
+</div>
+<script>
+    $(".search-submit-btn").on("click", function () {
+        window.location.href = "/search?name=" + $(".form-control").val()
+    })
+</script>
