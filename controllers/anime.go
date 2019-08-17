@@ -26,11 +26,11 @@ func (c *AnimeController)Search() {
 	name:=c.GetString("name")
 	if name == "" {
 		c.Redirect("/",302)
+		return
 	}
 	var ms []*models.Anime
 	orm.NewOrm().QueryTable("Anime").Filter("name__icontains",name).All(&ms)
-	fmt.Println(ms)
-	
+
 	c.Data["animes"]=ms
 	c.Data["search"]=name
 }

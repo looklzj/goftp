@@ -38,7 +38,7 @@
         </div>
         <div class="w3_search">
             <form action="/search" method="get" onclick="js:$('#search-modal').modal('show')">
-                <input type="text" name="search" value={{.search}} placeholder="Search">
+                <input type="text" name="search" value="{{.search}}" placeholder="Search">
                 <!--input type="submit" value="Go"-->
             </form>
         </div>
@@ -94,7 +94,7 @@
             </div>
             <section>
                 <div class="modal-body" style="width: 100%; display: inline-block;">
-                    <input type="text" name="moviename" class="form-control" value={{.search}} placeholder="Movies & Shows Type here">
+                    <input type="text" name="moviename" class="form-control" value="{{.search}}" placeholder="Movies & Shows Type here">
                     <button class="search-submit-btn">search</button>
                     <div class="p-md-2 pt-md-3 search-result">
                     </div>
@@ -105,6 +105,8 @@
 </div>
 <script>
     $(".search-submit-btn").on("click", function () {
-        window.location.href = "/search?name=" + $(".form-control").val()
+        var val = $(".form-control").val()
+        val == `placeholder="Movies` && (val='')
+        window.location.href = "/search?name=" + val
     })
 </script>
